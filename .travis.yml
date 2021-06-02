@@ -1,0 +1,11 @@
+language: generic
+
+# 用户权限
+sudo: required
+# 需要的程序
+services:
+  - docker
+before_install:
+  - docker build -t nbhaohao/docker-react -f Dockerfile.dev .
+script:
+  - docker run -e "CI=true" nbhaohao/docker-react npm run test
